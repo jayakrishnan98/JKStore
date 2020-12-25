@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
       image:"https://i1.wp.com/www.pdevice.com/wp-content/uploads/2019/04/Oppo-Reno-Zoom.jpg?fit=600%2C600&ssl=1"
     }
   ]
-  res.render('index', { title: 'Express',products});
+  res.render('index', { title: 'Express',products,admin:false});
 });
 
 module.exports = router;
