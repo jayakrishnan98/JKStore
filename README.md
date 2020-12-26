@@ -4,7 +4,7 @@
 #### E-commerce Website made for study purpose.
 
 
-I made this project just for fun study purposes.
+I am making this project just for study purposes.
 
 Skills: JS / HTML / CSS / HANDLEBARS /NODEJS
 
