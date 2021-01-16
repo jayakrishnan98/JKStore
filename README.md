@@ -8,7 +8,7 @@ I am making this project just for study purposes.
 
 Skills: JS / HTML / CSS / HANDLEBARS /NODEJS
 
-- 🔭 I’m currently working on this page. 
+- 🔭 I’m currently working on this work. 
 
 
 
