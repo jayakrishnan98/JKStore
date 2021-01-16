@@ -24,10 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileupload());
 
 db.connect((err)=>{
-  if(err)
-    console.log('error occured'+ err);
-  else
-    console.log("Database connected successfully");  
+  if(err) console.log('error occured\n'+ err);
+  else console.log("Database connected successfully");  
 })
 
 app.use('/', userRouter);
