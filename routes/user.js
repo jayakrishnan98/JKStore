@@ -7,9 +7,7 @@ router.get('/', function(req, res, next) {
   
   productHelpers.getAllProducts().then((products)=>{
     
-    res.render('admin/view-products',{admin:false, products});
+    res.render('user/view-products',{admin:false, products});
   })
-  
 });
-
 module.exports = router;
