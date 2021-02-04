@@ -24,19 +24,19 @@ router.get('/signup',(req,res)=>{
 
 router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((data)=>{
-     console.log(data)
+     res.redirect('/')
   })
 })
 
 router.post('/login', (req,res)=>{
-  userHelpers.doLogin(req.body).then((response)=>{
-    if(response.status){
-      res.redirect('/')
-    }
-    else{
-      res.redirect('/login')
-    }
-  })
+  userHelpers.doLogin(req.body)//.then((response)=>{
+    // if(response.status){
+    //   res.redirect('/')
+    // }
+    // else{
+    //   res.redirect('/login')
+    // }
+  //})
 })
 
 module.exports = router;
