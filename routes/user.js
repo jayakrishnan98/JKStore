@@ -11,7 +11,7 @@ const verifyLogine=(req,res,next)=>{
   }
 }
 
-/* GET home page. */
+/* GET home page. */  
 router.get('/', function(req, res, next) {
   let user = req.session.user
   productHelpers.getAllProducts().then((products)=>{
@@ -36,8 +36,10 @@ router.get('/signup',(req,res)=>{
 })
 
 router.post('/signup',(req,res)=>{
-  userHelpers.doSignup(req.body).then((data)=>{
-     res.redirect('/')
+  userHelpers.doSignup(req.body).then((response)=>{
+    req.session.loggedIn=true
+    req.session.user=response.user
+    res.redirect('/')
   })
 })
 
@@ -66,6 +68,12 @@ router.get('/cart',verifyLogine,(req,res)=>{
 router.get('/logout',(req,res)=>{
   req.session.destroy()
   res.redirect('/login')
+})
+
+router.get('/add-to-cart/:id',verifyLogine,(req,res)=>{
+  userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
+    res.redirect('/')
+  })
 })
 
 
