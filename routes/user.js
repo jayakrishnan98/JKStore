@@ -61,7 +61,9 @@ router.get('/payment',(req,res)=>{
   res.render("user/payment")
 })
 
-router.get('/cart',verifyLogine,(req,res)=>{
+router.get('/cart',verifyLogine, async(req,res)=>{
+  let product = await userHelpers.getCartProducts(req.session.user._id);
+  console.log(product);
   res.render("user/cart")
 })
 
