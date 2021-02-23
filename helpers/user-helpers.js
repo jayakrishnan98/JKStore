@@ -51,11 +51,11 @@ module.exports = {
                 let proExist = userCart.products.findIndex(product => product.item === proId)
                 if (proExist != -1) {
                     db.get().collection(collection.CART_COLLECTION)
-                        .updateOne({ 'products.item': ObjectID(proId) },
+                        .updateOne({user:objectId(userId),'products.item': ObjectID(proId) },
                             {
                                 $inc: { 'products.$.quantity': 1 }
                             }
-                        ).then(()=>{
+                        ).then(() => {
                             resolve()
                         })
                 }
@@ -92,20 +92,25 @@ module.exports = {
                     }
                 },
                 {
-                    $unwind:'products'
+                    $unwind: '$products'
                 },
                 {
-                    $project:{
-                        item:'$products.item',
-                        quantity:'$products.quantity'
-                    }   
+                    $project: {
+                        item: '$products.item',
+                        quantity: '$products.quantity'
+                    }
                 },
                 {
-                    $lookup:{
-                        from:collection.PRODUCT_COLLECTION,
-                        localField:'$item',
-                        foreignField:'_id',
-                        as:'product'
+                    $lookup: {
+                        from: collection.PRODUCT_COLLECTION,
+                        localField: 'item',
+                        foreignField: '_id',
+                        as: 'product'
+                    }
+                },
+                {
+                    $project: {
+                        item: 1, quantity: 1, product: { $arrayElemAt: ["$product", 0] }
                     }
                 }
 
@@ -119,8 +124,25 @@ module.exports = {
             let cart = await db.get().collection(collection.CART_COLLECTION).findOne({ user: objectId(userId) })
             if (cart) {
                 count = cart.products.length
+                console.log(count)
             }
-            resolve(count)
+
+            resolve(count);
+        })
+
+    },
+    changeProductQuantity: ({ details }) => {
+        details.count=parseInt(details.count)
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.CART_COLLECTION)
+                .updateOne({ _id:objectId(details.cart),'products.item': ObjectID(details.product) },
+                    {
+                        $inc: { 'products.$.quantity': details.count }
+                    }
+
+                ).then(() => {
+                    resolve()
+                })
         })
     }
 }

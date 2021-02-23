@@ -17,8 +17,10 @@ router.get('/', async  (req, res, next)=> {
   let cartCount = null;
   productHelpers.getAllProducts().then((products)=>{
     if(user){
-      cartCount= userHelpers.getCartCount(user._id)
+      cartCount= userHelpers.getCartCount(req.session.user._id)
+      console.log("CartCount-");
     }
+    
     res.render('user/view-products',{products,user,cartCount});
   })
 });
@@ -77,6 +79,12 @@ router.get('/logout',(req,res)=>{
 router.get('/add-to-cart/:id',(req,res)=>{
   userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
     res.json({status:true})
+  })
+})
+
+router.post('/cchange-product-quantity',(req,res,next)=>{
+  userHelpers.changeProductQuantity(req.body).then(()=>{
+    
   })
 })
 
