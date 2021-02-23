@@ -1,3 +1,4 @@
+const { response } = require('express');
 var express = require('express');
 var router = express.Router();
 var productHelpers = require("../helpers/product-helpers");
@@ -68,7 +69,8 @@ router.get('/payment',(req,res)=>{
 
 router.get('/cart',verifyLogine, async(req,res)=>{
   let products = await userHelpers.getCartProducts(req.session.user._id);
-  res.render("user/cart",{products,user:req.session.user})
+  let total = await userHelpers.getTotalAmount(req.session.user._id)
+  res.render("user/cart",{products,user:req.session.user,total})
 })
 
 router.get('/logout',(req,res)=>{
@@ -82,13 +84,16 @@ router.get('/add-to-cart/:id',(req,res)=>{
   })
 })
 
-router.post('/cchange-product-quantity',(req,res,next)=>{
-  userHelpers.changeProductQuantity(req.body).then(()=>{
-    
+router.post('/change-product-quantity',(req,res,next)=>{
+  userHelpers.changeProductQuantity(req.body).then((response)=>{
+    res.json(response)
   })
 })
 
-
+router.get('/place-order',verifyLogine,async(req,res)=>{
+  let total = await userHelpers.getTotalAmount(req.session.user._id)
+  res.render("user/place-order",{user:req.session.user,total})
+})
 
 module.exports = router;
 

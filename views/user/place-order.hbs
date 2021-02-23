@@ -1,0 +1,31 @@
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center">Delivery Details</h2>
+                <form action="/admin/add-product" method="POST" enctype="multipart/form-data">
+                    <label for="">Name</label>
+                    <input type="text" name="Name" class="form-control">
+
+                    <label for="">Address</label>
+                    <input type="text" name="Category" class="form-control">
+
+                    <label for="">Mobile</label>
+                    <input type="text" name="Description" class="form-control">
+
+                    <hr>
+                    <h2>Total price;Rs.{{total}}</h2>
+                    <label for="payment-method">Payment Method:</label>
+
+                    <select id="payment-method">
+                        <option value="cod">COD</option>
+                        <option value="online-transaction">Online Transaction</option>
+                        
+                    </select>
+                    <hr>
+                    <button type="submit" class="btn btn-success mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
