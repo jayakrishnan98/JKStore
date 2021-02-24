@@ -4,7 +4,7 @@ var router = express.Router();
 var productHelpers = require("../helpers/product-helpers");
 const userHelpers = require('../helpers/user-helpers')
 const verifyLogine=(req,res,next)=>{
-  if(req.session.loggedIn){
+  if(req.session.userLoggedIn){
     next()
   }
   else{
@@ -27,12 +27,12 @@ router.get('/', async  (req, res, next)=> {
 });
 
 router.get('/login',(req,res)=>{
-  if(req.session.loggedIn){
+  if(req.session.user){
     res.redirect('/')
   }
   else{
-    res.render('user/login',{"loginErr":req.session.loginErr})
-    req.session.loginErr = false;
+    res.render('user/login',{"loginErr":req.session.userLoginErr})
+    req.session.userLoginErr = false;
   }
   
 })
@@ -43,8 +43,9 @@ router.get('/signup',(req,res)=>{
 
 router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((response)=>{
-    req.session.loggedIn=true
+    
     req.session.user=response.user
+    req.session.user.loggedIn=true
     res.redirect('/')
   })
 })
@@ -52,8 +53,9 @@ router.post('/signup',(req,res)=>{
 router.post('/login', (req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
     if(response.status){
-      req.session.loggedIn=true
+      
       req.session.user=response.user
+      req.session.user.loggedIn=true
       res.redirect('/')
     }
     else{
@@ -69,12 +71,17 @@ router.get('/payment',(req,res)=>{
 
 router.get('/cart',verifyLogine, async(req,res)=>{
   let products = await userHelpers.getCartProducts(req.session.user._id);
-  let total = await userHelpers.getTotalAmount(req.session.user._id)
+  let total = 0
+  if(products.length>0){
+    total = await userHelpers.getTotalAmount(req.session.user._id)
+  }
+  
   res.render("user/cart",{products,user:req.session.user,total})
 })
 
 router.get('/logout',(req,res)=>{
-  req.session.destroy()
+  req.session.user=null
+  req.session.userLoggedIn=false
   res.redirect('/login')
 })
 
@@ -128,8 +135,15 @@ router.get('/view-order-products/:id',verifyLogine,async(req,res)=>{
 })
 
 
-router.post('/verufy-payment',(req,res)=>{
-
+router.post('/verify-payment',(req,res)=>{
+  userHelpers.verifyPayment(req.body).then(()=>{
+    userHelpers.changePaymentStatus(req.body['order[receipt]']).then(()=>{
+      res.json({status:true})
+    })
+  }).catch((err)=>{
+    console.log(err);
+    res.json({status:false,errMsg:'err'})
+  })
 })
 
 module.exports = router;
