@@ -85,7 +85,9 @@ router.get('/add-to-cart/:id',(req,res)=>{
 })
 
 router.post('/change-product-quantity',(req,res,next)=>{
-  userHelpers.changeProductQuantity(req.body).then((response)=>{
+  userHelpers.changeProductQuantity(req.body).then(async (response)=>{
+    response.total = await userHelpers.getTotalAmount(req.body.user) 
+    
     res.json(response)
   })
 })
@@ -93,6 +95,41 @@ router.post('/change-product-quantity',(req,res,next)=>{
 router.get('/place-order',verifyLogine,async(req,res)=>{
   let total = await userHelpers.getTotalAmount(req.session.user._id)
   res.render("user/place-order",{user:req.session.user,total})
+})
+
+router.post('\place-order',async (req,res)=>{
+  let products=await userHelpers.getCartProductList(req.body.userId)
+  let totalPrice = await userHelpers.getTotalAmount(req.body.userId)
+  userHelpers.placeOrder(req.body,products,totalPrice).then((orderId)=>{
+    if(req.body['payment-method']==="COD"){
+      res.json({codSuccess:true})
+    }
+    else{
+      userHelpers.generateRazorpay(orderId).then((response,totalPrice)=>{
+        res.json(response)
+      })
+    }
+    
+  })
+})
+
+router.get('/orders',verifyLogine,async(req,res)=>{
+  let orders = await userHelpers.getUserOrders(req.session.user._id)
+  res.render('user/orders',{user:req.session.user,orders})
+})
+
+router.get('order-success',verifyLogine,(req,res)=>{
+  res.render('user/order-success',{user:req.session.user})
+})
+
+router.get('/view-order-products/:id',verifyLogine,async(req,res)=>{
+  let products = await userHelpers.getOrderProducts(req.params.id)
+  res.render('user/view-order-products',{user:req.session.user,products})
+})
+
+
+router.post('/verufy-payment',(req,res)=>{
+
 })
 
 module.exports = router;
