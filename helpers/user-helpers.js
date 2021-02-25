@@ -5,11 +5,11 @@ const { ObjectID, ObjectId } = require("mongodb");
 var objectId = require('mongodb').ObjectID;
 const { response } = require("express");
 
-var instance = new this.generateRazorpay({
-    key_id: 'rzp_test_ro5OYE0EgUPYtg',
-    key_secret: '5JYlW0aB73BiBfBr29rXUEld',
+// var instance = new this.generateRazorpay({
+//     key_id: 'rzp_test_ro5OYE0EgUPYtg',
+//     key_secret: '5JYlW0aB73BiBfBr29rXUEld',
 
-});
+// });
 
 module.exports = {
     doSignup: (userData) => {
@@ -55,10 +55,10 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({ user: ObjectId(userId) })
             if (userCart) {
-                let proExist = userCart.products.findIndex(product => product.item === proId)
+                let proExist = userCart.products.findIndex(product => product.item == proId)
                 if (proExist != -1) {
                     db.get().collection(collection.CART_COLLECTION)
-                        .updateOne({ user: objectId(userId), 'products.item': ObjectID(proId) },
+                        .updateOne({'products.item': ObjectID(proId) },
                             {
                                 $inc: { 'products.$.quantity': 1 }
                             }

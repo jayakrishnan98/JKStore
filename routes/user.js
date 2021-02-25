@@ -13,13 +13,13 @@ const verifyLogine=(req,res,next)=>{
 }
 
 /* GET home page. */  
-router.get('/', async  (req, res, next)=> {
+router.get('/',async (req, res, next)=> {
   let user = req.session.user
   let cartCount = null;
-  productHelpers.getAllProducts().then((products)=>{
+  productHelpers.getAllProducts().then(async(products)=>{
     if(user){
-      cartCount= userHelpers.getCartCount(req.session.user._id)
-      console.log("CartCount-");
+      cartCount=await userHelpers.getCartCount(req.session.user._id)
+      console.log("CartCount-"+cartCount);
     }
     
     res.render('user/view-products',{products,user,cartCount});
