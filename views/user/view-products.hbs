@@ -1,17 +1,115 @@
 <section>
+    <div>
+        <!-- Slider 1 -->
+        <div class="slider" id="slider1">
+            <!-- Slides -->
+            <div
+                style="background-image:url(https://cdn57.androidauthority.net/wp-content/uploads/2019/08/Samsung-Galaxy-Note-10-Plus-Screen-upright-on-table-1.jpg)">
+            </div>
+            <div
+                style="background-image:url(background-image:url(https://cdn57.androidauthority.net/wp-content/uploads/2019/05/Pixel-3a-screen-standing-on-table-1340x754.jpg)">
+            </div>
+            <div
+                style="background-image:url(https://images.unsplash.com/photo-1598965402089-897ce52e8355?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YW5kcm9pZCUyMHBob25lfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80)">
+            </div>
+            <div style="background-image:url(https://cdn.mos.cms.futurecdn.net/hJwS7qDt6bnE6E4RZoDhmg.jpg)"></div>
+            <div style="background-image:url(https://img3.goodfon.com/wallpaper/nbig/a/65/sotovyy-telefon-ruka.jpg)">
+            </div>
+            <!-- The Arrows -->
+            <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100">
+                    <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path>
+                </svg></i>
+            <i class="right" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100">
+                    <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+                        transform="translate(100, 100) rotate(180) "></path>
+                </svg></i>
+            <!-- Title Bar -->
+            <span class="titleBar">
+
+            </span>
+        </div>
+
+        <br>
+
+        <div class="row2Wrap">
+
+            <div class="slider" id="slider2">
+
+                <div
+                    style="background-image:url(https://i.pinimg.com/originals/e1/dc/7f/e1dc7f04ec5d5a77b0fbe5f2ed59a863.jpg)">
+                </div>
+                <div
+                    style="background-image:url(https://cdn.mos.cms.futurecdn.net/hJwS7qDt6bnE6E4RZoDhmg.jpg)">
+                </div>
+                <div style="background-image:url(https://images.unsplash.com/photo-1598965402089-897ce52e8355?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YW5kcm9pZCUyMHBob25lfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80)">
+                </div>
+                <div style="background-image:url(https://cdn57.androidauthority.net/wp-content/uploads/2019/08/Samsung-Galaxy-Note-10-Plus-Screen-upright-on-table-1.jpg)"></div>
+
+                <i class="left" class="arrows" style="z-index:2; position:absolute;">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path>
+                    </svg>
+                </i>
+                <i class="right" class="arrows" style="z-index:2; position:absolute;">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+                            transform="translate(100, 100) rotate(180) "></path>
+                    </svg>
+                </i>
+           
+            </div>
+
+            <!-- <h3>Individual slide text</h3> -->
+
+            <!-- Slider1 -->
+            <div class="slider" id="slider3">
+                <div style="background-image:url(https://wallpaper.dog/large/10838667.jpg)">
+                    
+                </div>
+                <div
+                    style="background-image:url(https://cdn.wallpapersafari.com/93/60/p20HW1.jpg)">
+                    
+                </div>
+                <div style="background-image:url(https://images.unsplash.com/photo-1498661705887-3778d9ecb4ff?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1000&q=80)">
+                    
+                </div>
+                <!-- The Arrows -->
+                <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100">
+                        <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path>
+                    </svg></i>
+                <i class="right" class="arrows" style="z-index:2; position:absolute;">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+                            transform="translate(100, 100) rotate(180) "></path>
+                    </svg></i>
+                <!-- Title Bar -->
+                <!--     <span class="titleBar">
+        <h1>I am like a leaf in the wind.</h1> 
+        <p>Watch me soar!</p>
+    </span> -->
+            </div>
+
+        </div>
+
+        <div class="content">
+            <h2> Find Your Perfect Crime Partner here with JKSTORE </h2>
+
+        </div>
+    </div>
     <div class="container mt-5">
         <div class="row">
             {{#each products}}
             <div class="col-md-3 p-3">
                 <div class="card" style="width: 15rem; height:24rem">
-                    <img class="card-img-top" height="250px" src="/product-images/{{this._id}}.jpg" alt="Card image cap">
+                    <img class="card-img-top" height="250px" src="/product-images/{{this._id}}.jpg"
+                        alt="Card image cap">
                     <div class="card-body">
                         <h6 class="card-title">{{this.Name}}</h5>
-                        <h6 class="card-title">Rs.{{this.Price}}</h5>
-                        
-                        
-                        {{!-- <a href="/add-to-cart/{{this._id}}" class="btn btn-primary">Add to cart</a> --}}
-                        <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
+                            <h6 class="card-title">Rs.{{this.Price}}</h5>
+
+
+                                {{!-- <a href="/add-to-cart/{{this._id}}" class="btn btn-primary">Add to cart</a> --}}
+                                <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -20,4 +118,423 @@
     </div>
 </section>
 
+<style>
+    .slider,
+    .slider>div {
+        /* Images default to Center Center. Maybe try 'center top'? */
+        background-position: center center;
+        display: block;
+        width: 100%;
+        height: 500px;
+        /* height: 100vh; */
+        /* If you want fullscreen */
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #000;
+        overflow: hidden;
+        -moz-transition: transform .4s;
+        -o-transition: transform .4s;
+        -webkit-transition: transform .4s;
+        transition: transform .4s;
+    }
 
+    .slider>div {
+        position: absolute;
+    }
+
+    .slider>i {
+        color: #5bbd72;
+        position: absolute;
+        font-size: 60px;
+        margin: 20px;
+        top: 40%;
+        text-shadow: 0 10px 2px #223422;
+        transition: .3s;
+        width: 30px;
+        padding: 10px 13px;
+        background: #fff;
+        background: rgba(255, 255, 255, .3);
+        cursor: pointer;
+        line-height: 0;
+        box-sizing: content-box;
+        border-radius: 3px;
+        z-index: 4;
+    }
+
+    .slider>i svg {
+        margin-top: 3px;
+    }
+
+    .slider>.left {
+        left: -100px;
+    }
+
+    .slider>.right {
+        right: -100px;
+    }
+
+    .slider:hover>.left {
+        left: 0;
+    }
+
+    .slider:hover>.right {
+        right: 0;
+    }
+
+    .slider>i:hover {
+        background: #fff;
+        background: rgba(255, 255, 255, .8);
+        transform: translateX(-2px);
+    }
+
+    .slider>i.right:hover {
+        transform: translateX(2px);
+    }
+
+    .slider>i.right:active,
+    .slider>i.left:active {
+        transform: translateY(1px);
+    }
+
+    .slider:hover>div {
+        transform: scale(1.01);
+    }
+
+    .hoverZoomOff:hover>div {
+        transform: scale(1);
+    }
+
+    .slider>ul {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        z-index: 4;
+        padding: 0;
+        margin: 0;
+        transform: translateX(-50%);
+    }
+
+    .slider>ul>li {
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        list-style: none;
+        float: left;
+        margin: 10px 10px 0;
+        cursor: pointer;
+        border: 1px solid #fff;
+        -moz-transition: .3s;
+        -o-transition: .3s;
+        -webkit-transition: .3s;
+        transition: .3s;
+    }
+
+    .slider>ul>.showli {
+        background-color: #7EC03D;
+        -moz-animation: boing .5s forwards;
+        -o-animation: boing .5s forwards;
+        -webkit-animation: boing .5s forwards;
+        animation: boing .5s forwards;
+    }
+
+    .slider>ul>li:hover {
+        background-color: #7EC03D;
+    }
+
+    .slider>.show {
+        z-index: 1;
+    }
+
+    .hideDots>ul {
+        display: none;
+    }
+
+    .showArrows>.left {
+        left: 0;
+    }
+
+    .showArrows>.right {
+        right: 0;
+    }
+
+    .titleBar {
+        z-index: 2;
+        display: inline-block;
+        background: rgba(0, 0, 0, .5);
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        transform: translateY(100%);
+        padding: 20px 30px;
+        transition: .3s;
+        color: #fff;
+    }
+
+    .titleBar * {
+        transform: translate(-20px, 30px);
+        transition: all 700ms cubic-bezier(0.37, 0.31, 0.2, 0.85) 200ms;
+        opacity: 0;
+    }
+
+    .titleBarTop .titleBar * {
+        transform: translate(-20px, -30px);
+    }
+
+    .slider:hover .titleBar,
+    .slider:hover .titleBar * {
+        transform: translate(0);
+        opacity: 1;
+    }
+
+    .titleBarTop .titleBar {
+        top: 0;
+        bottom: initial;
+        transform: translateY(-100%);
+    }
+
+    .slider>div span {
+        display: block;
+        background: rgba(0, 0, 0, .5);
+        position: absolute;
+        bottom: 0;
+        color: #fff;
+        text-align: center;
+        padding: 0;
+        width: 100%;
+    }
+
+
+    @keyframes boing {
+        0% {
+            transform: scale(1.2);
+        }
+
+        40% {
+            transform: scale(.6);
+        }
+
+        60% {
+            transform: scale(1.2);
+        }
+
+        80% {
+            transform: scale(.8);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* -------------------------------------- */
+
+    #slider2 {
+        max-width: 30%;
+        margin-right: 20px;
+    }
+
+    .row2Wrap {
+        display: flex;
+    }
+
+    .content {
+        padding: 50px;
+        margin-bottom: 100px;
+    }
+
+    html {
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: 'Crimson Text', sans-serif;
+        font-weight: 100;
+    }
+
+    body {
+        font: 15px 'Titillium Web', Arial, sans-serif;
+        background: radial-gradient(#121212, #000);
+        height: 100%;
+        color: #aaa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        padding: 10px 15vw;
+    }
+</style>
+<script>
+
+    (function ($) {
+        "use strict";
+        $.fn.sliderResponsive = function (settings) {
+
+            var set = $.extend(
+                {
+                    slidePause: 5000,
+                    fadeSpeed: 800,
+                    autoPlay: "on",
+                    showArrows: "off",
+                    hideDots: "off",
+                    hoverZoom: "on",
+                    titleBarTop: "off"
+                },
+                settings
+            );
+
+            var $slider = $(this);
+            var size = $slider.find("> div").length; //number of slides
+            var position = 0; // current position of carousal
+            var sliderIntervalID; // used to clear autoplay
+
+            // Add a Dot for each slide
+            $slider.append("<ul></ul>");
+            $slider.find("> div").each(function () {
+                $slider.find("> ul").append('<li></li>');
+            });
+
+            // Put .show on the first Slide
+            $slider.find("div:first-of-type").addClass("show");
+
+            // Put .showLi on the first dot
+            $slider.find("li:first-of-type").addClass("showli")
+
+            //fadeout all items except .show
+            $slider.find("> div").not(".show").fadeOut();
+
+            // If Autoplay is set to 'on' than start it
+            if (set.autoPlay === "on") {
+                startSlider();
+            }
+
+            // If showarrows is set to 'on' then don't hide them
+            if (set.showArrows === "on") {
+                $slider.addClass('showArrows');
+            }
+
+            // If hideDots is set to 'on' then hide them
+            if (set.hideDots === "on") {
+                $slider.addClass('hideDots');
+            }
+
+            // If hoverZoom is set to 'off' then stop it
+            if (set.hoverZoom === "off") {
+                $slider.addClass('hoverZoomOff');
+            }
+
+            // If titleBarTop is set to 'on' then move it up
+            if (set.titleBarTop === "on") {
+                $slider.addClass('titleBarTop');
+            }
+
+            // function to start auto play
+            function startSlider() {
+                sliderIntervalID = setInterval(function () {
+                    nextSlide();
+                }, set.slidePause);
+            }
+
+            // on mouseover stop the autoplay
+            $slider.mouseover(function () {
+                if (set.autoPlay === "on") {
+                    clearInterval(sliderIntervalID);
+                }
+            });
+
+            // on mouseout starts the autoplay
+            $slider.mouseout(function () {
+                if (set.autoPlay === "on") {
+                    startSlider();
+                }
+            });
+
+            //on right arrow click
+            $slider.find("> .right").click(nextSlide)
+
+            //on left arrow click
+            $slider.find("> .left").click(prevSlide);
+
+            // Go to next slide
+            function nextSlide() {
+                position = $slider.find(".show").index() + 1;
+                if (position > size - 1) position = 0;
+                changeCarousel(position);
+            }
+
+            // Go to previous slide
+            function prevSlide() {
+                position = $slider.find(".show").index() - 1;
+                if (position < 0) position = size - 1;
+                changeCarousel(position);
+            }
+
+            //when user clicks slider button
+            $slider.find(" > ul > li").click(function () {
+                position = $(this).index();
+                changeCarousel($(this).index());
+            });
+
+            //this changes the image and button selection
+            function changeCarousel() {
+                $slider.find(".show").removeClass("show").fadeOut();
+                $slider
+                    .find("> div")
+                    .eq(position)
+                    .fadeIn(set.fadeSpeed)
+                    .addClass("show");
+                // The Dots
+                $slider.find("> ul").find(".showli").removeClass("showli");
+                $slider.find("> ul > li").eq(position).addClass("showli");
+            }
+
+            return $slider;
+        };
+    })(jQuery);
+
+
+
+    //////////////////////////////////////////////
+    // Activate each slider - change options
+    //////////////////////////////////////////////
+    $(document).ready(function () {
+
+        $("#slider1").sliderResponsive({
+            // Using default everything
+            // slidePause: 5000,
+            // fadeSpeed: 800,
+            // autoPlay: "on",
+            // showArrows: "off", 
+            // hideDots: "off", 
+            // hoverZoom: "on", 
+            // titleBarTop: "off"
+        });
+
+        $("#slider2").sliderResponsive({
+            fadeSpeed: 300,
+            autoPlay: "off",
+            showArrows: "on",
+            hideDots: "on"
+        });
+
+        $("#slider3").sliderResponsive({
+            hoverZoom: "off",
+            hideDots: "on"
+        });
+
+    });
+
+
+
+</script>
