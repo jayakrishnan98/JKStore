@@ -86,7 +86,7 @@ router.get('/logout',(req,res)=>{
 })
 
 router.get('/add-to-cart/:id',(req,res)=>{
-  userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
+  userHelpers.addToCart(req.params._id,req.session.user._id).then(()=>{
     res.json({status:true})
   })
 })

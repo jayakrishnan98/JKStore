@@ -49,20 +49,21 @@ module.exports = {
     },
     addToCart: (proId, userId) => {
         let proObj = {
-            item: objectId(userId),
+            item: objectId(proId),
             quantity: 1
         }
         return new Promise(async (resolve, reject) => {
-            let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({ user: ObjectId(userId) })
+            let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({ user: objectId(userId) })
             if (userCart) {
                 let proExist = userCart.products.findIndex(product => product.item == proId)
+                console.log(proExist);
                 if (proExist != -1) {
-                    db.get().collection(collection.CART_COLLECTION)
-                        .updateOne({'products.item': ObjectID(proId) },
+                    db.get().collection(collection.CART_COLLECTION).updateOne({'products.item': objectId(proId) },
                             {
                                 $inc: { 'products.$.quantity': 1 }
                             }
                         ).then(() => {
+                            console.log("if");
                             resolve()
                         })
                 }
@@ -75,6 +76,7 @@ module.exports = {
 
                             }
                         ).then((response) => {
+                            console.log("randamathe else");
                             resolve()
                         })
                 }
@@ -85,6 +87,7 @@ module.exports = {
                     products: [proObj]
                 }
                 db.get().collection(collection.CART_COLLECTION).insertOne(cartObj).then((response) => {
+                    console.log("sadha else");
                     resolve()
                 })
             }
