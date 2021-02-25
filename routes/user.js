@@ -104,7 +104,7 @@ router.get('/place-order',verifyLogine,async(req,res)=>{
   res.render("user/place-order",{user:req.session.user,total})
 })
 
-router.post('\place-order',async (req,res)=>{
+router.post('/place-order',async (req,res)=>{
   let products=await userHelpers.getCartProductList(req.body.userId)
   let totalPrice = await userHelpers.getTotalAmount(req.body.userId)
   userHelpers.placeOrder(req.body,products,totalPrice).then((orderId)=>{
@@ -125,7 +125,7 @@ router.get('/orders',verifyLogine,async(req,res)=>{
   res.render('user/orders',{user:req.session.user,orders})
 })
 
-router.get('order-success',verifyLogine,(req,res)=>{
+router.get('/order-success',verifyLogine,(req,res)=>{
   res.render('user/order-success',{user:req.session.user})
 })
 
