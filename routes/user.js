@@ -43,7 +43,7 @@ router.get('/signup',(req,res)=>{
 
 router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((response)=>{
-    
+    let user = req.session.user
     req.session.user=response.user
     req.session.loggedIn=true
     res.redirect('/')

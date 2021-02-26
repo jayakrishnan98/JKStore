@@ -141,12 +141,12 @@ module.exports = {
         })
 
     },
-    changeProductQuantity: ({ details }) => {
+    changeProductQuantity: (details) => {
         details.count = parseInt(details.count)
         details.quantity = parseInt(details.quantity)
 
         return new Promise((resolve, reject) => {
-            if (details.count == -1 && deatails.quantity == 1) {
+            if (details.count == -1 && details.quantity == 1) {
                 db.get().collection(collection.CART_COLLECTION)
                     .updateOne({ _id: objectId(details.cart) },
                         {

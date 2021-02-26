@@ -73,10 +73,10 @@
 <body>
     <h2>Create new account</h2>
     <form action="/signup" id="loginform" method="post">
-        <input name="Username" type="text" class="input" placeholder="Userame" />
+        <input name="Username" pattern="(?=.{8,}" required type="text" class="input" placeholder="Userame" />
         {{!-- <input name="Mobile Number" type="text" class="input" placeholder="Mobile Number" /> --}}
-        <input name="Email" type="text" class="input" placeholder="E-mail" />
-        <input name="Password" type="password" class="input" placeholder="Password" />
+        <input name="Email" type="email" required class="input" placeholder="E-mail" />
+        <input name="Password" id="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required type="password" class="input" placeholder="Password" />
         <button type="submit" class="loginbutton">SIGNUP</button>
     </form>
     <a href="/login">Already have an account?</a>
