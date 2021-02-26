@@ -76,6 +76,7 @@ router.get('/cart',verifyLogine, async(req,res)=>{
   if(products.length>0){
     total = await userHelpers.getTotalAmount(req.session.user._id)
   }
+  console.log("total"+total);
   res.render("user/cart",{products,user,total})
 })
 

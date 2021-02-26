@@ -203,7 +203,7 @@ module.exports = {
                 {
                     $group: {
                         _id: null,
-                        total: { $sum: { $multiply: [parseInt('$quantity'), parseInt('$product.Price')] } }
+                        total: { $sum: { $multiply: [parseFloat('$quantity'), parseFloat('$product.Price')] } }
                     }
                 }
 
@@ -244,7 +244,7 @@ module.exports = {
     },
     getUserOrders: (userId) => {
         return new Promise(async (resolve, reject) => {
-            let orders = await db.get().collection(collection.USER_COLLECTION).find({ userId: ObjectId(userid) }).toArray()
+            let orders = await db.get().collection(collection.USER_COLLECTION).find({ userId: ObjectId(userId) }).toArray()
             resolve(orders)
         })
     },
