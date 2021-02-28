@@ -37,19 +37,6 @@ router.get('/login',(req,res)=>{
   
 })
 
-router.get('/signup',(req,res)=>{
-  res.render('user/signup')
-})
-
-router.post('/signup',(req,res)=>{
-  userHelpers.doSignup(req.body).then((response)=>{
-    let user = req.session.user
-    req.session.user=response.user
-    req.session.loggedIn=true
-    res.redirect('/')
-  })
-})
-
 router.post('/login', (req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
     if(response.status){
@@ -64,6 +51,21 @@ router.post('/login', (req,res)=>{
     }
   })
 })
+
+router.get('/signup',(req,res)=>{
+  res.render('user/signup')
+})
+
+router.post('/signup',(req,res)=>{
+  userHelpers.doSignup(req.body).then((response)=>{
+    let user = req.session.user
+    req.session.user=response.user
+    req.session.loggedIn=true
+    res.redirect('/')
+  })
+})
+
+
 
 router.get('/payment',(req,res)=>{
   res.render("user/payment",{user:req.session.user})
