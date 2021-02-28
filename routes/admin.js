@@ -11,16 +11,16 @@ router.get('/', function(req, res, next) {
   })  
 });
 
-// router.get('/login',(req,res)=>{
-//   if(req.session.user){
-//     res.redirect('/')
-//   }
-//   else{
-//     res.render('admin/login',{"loginErr":req.session.userLoginErr})
-//     req.session.userLoginErr = false;
-//   }
+router.get('/logine',(req,res)=>{
+  if(req.session.user){
+    res.redirect('/')
+  }
+  else{
+    res.render('admin/logine',{"loginErr":req.session.userLoginErr})
+    req.session.userLoginErr = false;
+  }
   
-// })
+})
 
 
 
